@@ -192,7 +192,7 @@ def _search(search_index, query):
 
 def get_search_index():
     """Return the search index if authenticated or None."""
-    if isinstance(_USERNAME, str) and isinstance(_PASSWORD, str):
+    if isinstance(_USERNAME, basestring) and isinstance(_PASSWORD, basestring):
         # HTTP basic authentication
         if flask.request.authorization is None:
             return None
