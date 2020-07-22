@@ -1,0 +1,31 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+# !!! NEVER COMMIT USERNAME AND PASSWORD TO SOURCE CONTROL !!!
+# USERNAME and PASSWORD SHOULD be changed before deploying
+env_variables:
+  # Must be visible printable ASCII and not start with '!'
+  BASIC_AUTH_USERNAME: "username"
+  BASIC_AUTH_PASSWORD: "password"
+
+handlers:
+- url: /.*
+  script: main.app
+  secure: always
+
+libraries:
+- name: flask
+  version: "0.12"
+
+- name: werkzeug
+  version: "0.11.10"
+
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+# Skip the unit and integration tests
+- ^test.*\.py[co]?$
